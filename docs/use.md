@@ -5,13 +5,17 @@
  ./npc -server=ip:port -vkey=web界面中显示的密钥
 ```
 ## 注册到系统服务(开机启动、守护进程)
-对于linux、darwin
+对于**类linux系统**
 - 注册：`sudo ./npc install 其他参数（例如-server=xx -vkey=xx或者-config=xxx）`
-- 启动：`sudo npc start`
-- 停止：`sudo npc stop`
+    - 其行为为生成`/etc/systemd/system/Npc.service`文件（看不懂此行请忽略）
+    - 注册完成后默认启用开机自启功能
+- 启动：`sudo npc start` 或 `sudo systemctl start Npc`
+- 停止：`sudo npc stop` 或 `sudo systemctl stop Npc`
+- 手动关闭开机自启：`systemctl disable Npc`
+- 手动启用开机自启: `systemctl enable Npc`
 - 如果需要更换命令内容需要先卸载`./npc uninstall`，再重新注册
 
-对于windows，使用管理员身份运行cmd
+对于**windows系统**，使用管理员身份运行cmd
 
 - 注册：`npc.exe install 其他参数（例如-server=xx -vkey=xx或者-config=xxx）`
 - 启动：`npc.exe start`
